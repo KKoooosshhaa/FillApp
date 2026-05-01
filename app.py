@@ -45,6 +45,9 @@ def hide_streamlit_chrome() -> None:
         [data-testid="stToolbarActions"] button:has(span[data-testid="stToolbarActionButtonLabel"]) {
             display: none !important;
         }
+        [data-testid="stToolbarActions"] [data-testid="stToolbarActionButton"] button[aria-label=""] {
+            display: none !important;
+        }
         [data-testid="stToolbarActions"] button[aria-label="Deploy"],
         [data-testid="stToolbarActions"] button[aria-label="Share"],
         [data-testid="stToolbarActions"] button[aria-label="Fork"] {
