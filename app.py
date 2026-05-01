@@ -31,8 +31,6 @@ def hide_streamlit_chrome() -> None:
     st.markdown(
         """
         <style>
-        [data-testid="stToolbar"],
-        [data-testid="stToolbarActions"],
         [data-testid="stDecoration"],
         [data-testid="stStatusWidget"],
         [data-testid="appCreatorAvatar"],
@@ -44,11 +42,13 @@ def hide_streamlit_chrome() -> None:
             display: none !important;
             visibility: hidden !important;
         }
-        header {
-            visibility: hidden !important;
+        [data-testid="stToolbarActions"] button:has(span[data-testid="stToolbarActionButtonLabel"]) {
+            display: none !important;
         }
-        header * {
-            visibility: hidden !important;
+        [data-testid="stToolbarActions"] button[aria-label="Deploy"],
+        [data-testid="stToolbarActions"] button[aria-label="Share"],
+        [data-testid="stToolbarActions"] button[aria-label="Fork"] {
+            display: none !important;
         }
         </style>
         """,
