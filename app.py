@@ -27,7 +27,38 @@ from pipeline.validators import (
 st.set_page_config(page_title="Fill App", layout="wide")
 
 
+def hide_streamlit_chrome() -> None:
+    st.markdown(
+        """
+        <style>
+        [data-testid="stToolbar"],
+        [data-testid="stToolbarActions"],
+        [data-testid="stDecoration"],
+        [data-testid="stStatusWidget"],
+        [data-testid="appCreatorAvatar"],
+        .viewerBadge_container__1QSob,
+        a[href="https://streamlit.io/cloud"],
+        a[href^="https://share.streamlit.io/user/"],
+        div[class*="profileContainer"],
+        div[class*="viewerBadge"] {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        header {
+            visibility: hidden !important;
+        }
+        header * {
+            visibility: hidden !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def main() -> None:
+    hide_streamlit_chrome()
+
     st.title("Fill App")
     st.caption("Validate clean consignment CSVs, prepare platform files, then run local browser-assisted filling.")
 
